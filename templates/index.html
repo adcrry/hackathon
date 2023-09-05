@@ -20,6 +20,14 @@
           Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
           le cours et je te répondrai.
         </div>
+        {% for input in data %}
+        <div class="message message-ai-old">
+          {{ input['question']}}
+        </div>
+        <div class="message message-ai-old">
+          {{ input['answer']}}
+        </div>
+        {% endfor %}
       </section>
 
       <form id="prompt-form" class="prompt-container">

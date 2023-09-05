@@ -6,6 +6,7 @@
   --border-color: #cccccc;
   --secondary-color: #fff6d3;
   --loader-bullet-size: 6px;
+  --old-background-color: #b5b5b5;
 }
 
 * {
@@ -51,6 +52,10 @@ body {
 
 .message-human {
   background-color: var(--secondary-color);
+}
+
+.message-ai-old {
+  background-color: var(--old-background-color);
 }
 
 .prompt-container {
