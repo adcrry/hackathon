@@ -92,4 +92,10 @@ def gpt3_completion(content):
 )['choices'][0]['message']['content']
 
 def ask_question_to_pdf(question):
-    return gpt3_completion(text + " D'après le texte précédent, réponds à la question suivantes: " + question)
+    return gpt3_completion(text + " D'après le texte précédent, réponds à la question suivantes: " + question + " Si ce n'est pas une question demande à l'élève de te poser une question. ")
+
+def question():
+    return gpt3_completion(text + " Pose moi une question sur le texte précédent.")
+
+def correct_answer(answer, question):
+    return gpt3_completion(text + " La question était: " + question + ". La réponse de l'élève est: " + answer + ". Corrige cette réponse si elle est fausse.")
