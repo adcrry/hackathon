@@ -1,10 +1,21 @@
 :root {
+  
   --body-background-color: #f5f6f8;
   --main-background-color: #ffffff;
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
   --secondary-color: #fff6d3;
+  --loader-bullet-size: 6px;
+}
+
+.dark-theme{
+  --body-background-color: #1e1f24;
+  --main-background-color: #36333b;
+  --main-color: #ffffff;
+  --max-body-width: 700px;
+  --border-color: #9d90b5;
+  --secondary-color: #8a799c;
   --loader-bullet-size: 6px;
 }
 
@@ -76,6 +87,7 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 5px;
   padding: 5px;
+  background-color: var(--main-background-color);
 }
 
 .button {
@@ -83,6 +95,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   background-color: var(--main-background-color);
+  color: var(--main-color);
 }
 
 .button:hover,
@@ -93,6 +106,11 @@ body {
 
 .hidden {
   display: none;
+}
+
+#icon{
+  width: 24px;
+  cursor: pointer;
 }
 
 /* Loader code taken from https://loading.io/css/ */

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
+
     <title>Mon A.I.de mémoire</title>
 
     <link
@@ -38,9 +39,23 @@
         <button type="button" class="button" id="question-button">
           Pose-moi une question !
         </button>
-      </form>
+        <img src="static/images/moon.png" id="icon">
 
+      </form>
+      
       <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+
     </main>
+  
+  <script> 
+        var icon= document.getElementById("icon");
+
+        icon.onclick = function(){
+            document.body.classList.toggle("dark-theme");
+            if(document.body.classList.contains("dark-theme")){
+                  icon.src = "static/images/sun.png"
+            }else{ icon.src = "static/images/moon.png"}
+        }
+  </script>
   </body>
 </html>
