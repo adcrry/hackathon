@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 
 import src.utils.ask_question_to_pdf as ask_question_to_pdf
 
-UPLOAD_FOLDER = "/"
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER")
 ALLOWED_EXTENSIONS = {"pdf"}
 
 json_database = open("data.json")
@@ -64,6 +64,5 @@ def upload():
             flash("No selected file")
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config["UPLOAD_FOLDER"], filename))
-            return redirect(url_for("index", name=filename))
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], "filename.pdf"))
+            return redirect("/")
