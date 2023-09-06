@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
-
 import json
+
+from flask import Flask, render_template, request
 
 import src.utils.ask_question_to_pdf as ask_question_to_pdf
 
