@@ -5,7 +5,7 @@
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
-  --secondary-color: #fff6d3;
+  --secondary-color: #d3f5ff;
   --loader-bullet-size: 6px;
   --old-background-color: #b5b5b5;
 }
@@ -15,8 +15,8 @@
   --main-background-color: #36333b;
   --main-color: #ffffff;
   --max-body-width: 700px;
-  --border-color: #9d90b5;
-  --secondary-color: #8a799c;
+  --border-color: #cdc7d8;
+  --secondary-color: #8f7da2;
   --loader-bullet-size: 6px;
 }
 
@@ -56,13 +56,35 @@ body {
 }
 
 .message {
+  /*display: inline-block;*/
+  height: auto;
+  max-width: 75%;
+  /*width: 200px;   var(--max-body-width) */
+
   border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 10px 15px;
+  border-radius: 30px 30px 30px 3px;
+
+  -webkit-border-radius: 30px 30px 30px 3px;
+  -moz-border-radius: 30px 30px 30px 3px;
+
+  padding: 10px 25px;
+  text-align: left;
+  /*
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: var(--secondary-color) var(--secondary-color) transparent transparent;
+  */
+
 }
 
 .message-human {
+  position: relative;
+  left: auto;
+  right: -120px;
   background-color: var(--secondary-color);
+  border: 1px solid var(--secondary-color);
+  border-radius: 30px 30px 3px 30px;
 }
 
 .message-ai-old {
@@ -106,6 +128,7 @@ body {
   border-radius: 5px;
   padding: 5px;
   background-color: var(--main-background-color);
+  color: var(--main-color);
 }
 
 .button {
