@@ -7,7 +7,7 @@ const loadingElement = document.getElementById("loading");
 
 var questions = null
 var nbQuestion = 0
-
+var score = 0
 const createQCM = async (messagePromise) => {
   qcmForm.innerHTML = ""
   const qcmData = await messagePromise();
@@ -109,8 +109,8 @@ const correctQCM = () => {
       document.getElementById("q-" + i + "-1"),
       document.getElementById("q-" + i + "-2")
     ]
-    console.log(inputs[questions.questions[i].correct_answer])
     if (inputs[questions.questions[i].correct_answer].checked) {
+      score++
       labels[questions.questions[i].correct_answer].style.color = "green"
     } else {
       for (var j = 0; j < 3; j++) {
