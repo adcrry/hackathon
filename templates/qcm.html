@@ -25,8 +25,6 @@
             <input type="text" id="nbrQuestions" name="nbrQuestions" class="qcm-input" autocomplete="off" />
 
             <button type="submit" class="button" id="generate-button">Générer le QCM</button>
-            <button type="button" class="button" id="correct-button" onclick="correctQCM();">Corrige mon QCM !</button>
-
         </form>
 
         <section id="messages-container-loader" class="messages-container">
@@ -42,8 +40,12 @@
         </section>
 
         <form id="qcm-questions-form">
-
         </form>
+
+        <form class="qcm-container">
+            <button type="button" class="button" id="correct-button" onclick="correctQCM();">Corrige mon QCM !</button>
+        </form>
+
         <script src="{{ url_for('static', filename='qcm.js') }}"></script>
 
 </body>

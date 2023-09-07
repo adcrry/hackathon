@@ -4,6 +4,7 @@ const qcmForm = document.getElementById("qcm-questions-form")
 const messagesContainer = document.getElementById("messages-container-loader");
 const messagesContainer2 = document.getElementById("messages-container-loaded");
 const loadingElement = document.getElementById("loading");
+const correctButton = document.getElementById("correct-button");
 
 var questions = null
 var nbQuestion = 0
@@ -94,6 +95,8 @@ const handleNbrQuestions = async (event) => {
     const result = await response.json();
     return result.qcmQuestion;
   });
+
+  correctButton.classList.remove("hidden");
 }
 promptForm.addEventListener("submit", handleNbrQuestions);
 
@@ -125,3 +128,4 @@ const correctQCM = () => {
 }
 messagesContainer.classList.add("hidden");
 messagesContainer2.classList.add("hidden");
+correctButton.classList.add("hidden");

@@ -145,6 +145,17 @@ body {
   cursor: pointer;
 }
 
+#correct-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: var(--secondary-color);
+  color: var(--main-color);
+  border: none;
+  /* ajouter une bordure intérieur autour du texte */
+  padding: 5px;
+  padding-inline: 10px;
+}
+
 /* Loader code taken from https://loading.io/css/ */
 .loader {
   display: inline-block;
