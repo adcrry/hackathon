@@ -1,7 +1,5 @@
 const promptForm = document.getElementById("prompt-form");
 const submitButton = document.getElementById("submit-button");
-const nbrQuestions = document.getElementById("nbrQuestions");
-const generateButton = document.getElementById("generate-button");
 const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
 
@@ -74,36 +72,4 @@ const handleQuestionClick = async (event) => {
 
 questionButton.addEventListener("click", handleQuestionClick);
 
-/*
-const handleGenerate = async (event) => {
-  event.preventDefault();
-  // Parse form data in a structured object
-  const data = new FormData(event.target);
-  generateForm.reset();
 
-  let url = "/qcm/question";
-  if (generateButton.dataset.nbrQuestions !== undefined) {
-    url = "/qcm/answer";
-    data.append("nbrQuestions", generateButton.dataset.nbrQuestions);
-    delete generatenButton.dataset.nbrQuestions;
-    generateButton.classList.remove("hidden");
-    generateButton.innerHTML = "Message";
-  }
-}
-
-const handleGenerateClick = async (event) => {
-  appendAIMessage(async () => {
-    const response = await fetch("/qcm/question", {
-      method: "GET",
-    });
-    const result = await response.json();
-    const question = result.answer;
-
-    generateButton.dataset.question = question;
-    generateButton.classList.add("hidden");
-    return question;
-  });
-};
-
-questionButton.addEventListener("click", handleGenerateClick);
-*/

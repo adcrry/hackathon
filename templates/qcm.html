@@ -19,9 +19,11 @@
 
             <input type="text" id="nbrQuestions" name="nbrQuestions" class="qcm-input" autocomplete="off" />
 
-            <button type="generate" class="button" id="generate-button">Générer le QCM</button>
+            <button type="submit" class="button" id="generate-button">Générer le QCM</button>
 
         </form>
+
+        <script src="{{ url_for('static', filename='qcm.js') }}"></script>
 
         <form>
             <p>Veuillez choisir la meilleure méthode pour vous contacter :</p>
@@ -36,9 +38,6 @@
                 <label for="contactChoice3">Courrier</label>
             </div>
         </form>
-        <div>
-            <button type="submit">Terminer et corriger</button>
-        </div>
 
 
 
