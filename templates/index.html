@@ -10,9 +10,9 @@
 
 <body>
   <main class="main-container">
-    <header class="header">
-      <h1 class="header-title">Mon A.I.de mémoire</h1>
-    </header>
+
+    {% include 'navbar.html' %}
+
     <form method="POST" enctype=multipart/form-data action="/upload">
       <input type="file" name="file" style="margin-bottom: 10px;" />
       <input type="submit" value="Envoyer" />
