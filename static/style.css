@@ -159,6 +159,20 @@ body {
   font-weight: bold;
 }
 
+#qcm-questions-form {
+  margin-top: 40px;
+  /* frame with a rounded border*/
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+  padding-inline: 30px;
+
+}
+
+#qcm-questions-form div p {
+  font-weight: bold;
+}
+
 /* Loader code taken from https://loading.io/css/ */
 .loader {
   display: inline-block;

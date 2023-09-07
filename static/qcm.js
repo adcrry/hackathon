@@ -97,6 +97,7 @@ const handleNbrQuestions = async (event) => {
   });
 
   correctButton.classList.remove("hidden");
+  qcmForm.classList.remove("hidden");
 }
 promptForm.addEventListener("submit", handleNbrQuestions);
 
@@ -129,3 +130,4 @@ const correctQCM = () => {
 messagesContainer.classList.add("hidden");
 messagesContainer2.classList.add("hidden");
 correctButton.classList.add("hidden");
+qcmForm.classList.add("hidden");
