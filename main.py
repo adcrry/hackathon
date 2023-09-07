@@ -1,12 +1,19 @@
 import json
+import os
 
-from flask import Flask, render_template, request
+from flask import Flask, flash, redirect, render_template, request, url_for
+from werkzeug.utils import secure_filename
 
 import src.utils.ask_question_to_pdf as ask_question_to_pdf
+
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER")
+ALLOWED_EXTENSIONS = {"pdf"}
 
 json_database = open("data.json")
 data = json.loads(json_database.read())
 app = Flask("app")
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+app.secret_key = "super secret key"
 
 
 @app.route("/")
@@ -57,3 +64,25 @@ def qcmAnswer():
     # eeuuh faut gérer de récup les réponses de l'élève
     # qcmAnswer = ask_question_to_pdf.generate_answer_QCM(n, answers)
     return {"qcmAnswer": qcmAnswer}
+
+
+def allowed_file(filename):
+    return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route("/upload", methods=["POST"])
+def upload():
+    if request.method == "POST":
+        # check if the post request has the file part
+        if "file" not in request.files:
+            flash("No file part")
+            return redirect(request.url)
+        file = request.files["file"]
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == "":
+            flash("No selected file")
+            return redirect(request.url)
+        if file and allowed_file(file.filename):
+            file.save(os.path.join(app.config["UPLOAD_FOLDER"], "filename.pdf"))
+            return redirect("/")

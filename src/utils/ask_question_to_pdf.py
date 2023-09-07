@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from nltk.tokenize import sent_tokenize
 
 load_dotenv()
+UPLOAD_FOLDER = os.getenv("UPLOAD_FOLDER")
 
 
 def open_file(filepath):
@@ -79,7 +80,7 @@ def split_text(text, chunk_size=5000):
     return chunks
 
 
-filename = os.path.join(os.path.dirname(__file__), "filename.pdf")
+filename = os.path.join(UPLOAD_FOLDER, "filename.pdf")
 document = read_pdf(filename)
 chunks = split_text(document)
 
