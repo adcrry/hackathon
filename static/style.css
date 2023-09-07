@@ -52,7 +52,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .message {
@@ -103,6 +103,10 @@ body {
   background-color: var(--main-background-color);
   padding: 20px;
   border-top: 1px solid var(--border-color);
+}
+
+.qcm-container {
+  margin-left: 300px;
 }
 
 .prompt-label {

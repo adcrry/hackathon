@@ -1,11 +1,20 @@
 const generateButton = document.getElementById("generate-button");
 const promptForm = document.getElementById("qcm-form")
 const qcmForm = document.getElementById("qcm-questions-form")
+const messagesContainer = document.getElementById("messages-container-loader");
+const messagesContainer2 = document.getElementById("messages-container-loaded");
+const loadingElement = document.getElementById("loading");
 
 const createQCM = async (messagePromise) => {
   qcmForm.innerHTML = ""
   const qcmData = await messagePromise();
   const jsonData = JSON.parse(qcmData)
+
+  // Replace the loader with the answer
+  messagesContainer.classList.add("hidden");
+
+  messagesContainer2.classList.remove("hidden");
+
   for (var question in jsonData.questions) {
     const div = document.createElement("div");
     const questionElement = document.createElement("p");
@@ -52,7 +61,18 @@ const createQCM = async (messagePromise) => {
 };
 
 const handleNbrQuestions = async (event) => {
+
   event.preventDefault();
+
+  // Show the messagesContainer
+  promptForm.classList.add("hidden");
+  messagesContainer.classList.remove("hidden");
+
+
+  // Add a loader to the interface
+  loadingElement.innerHTML = loadingElement.innerHTML +
+    "<div class='loader'><div></div><div></div><div></div>";
+
   // Parse form data in a structured object
   const data = new FormData(event.target);
   promptForm.reset();
@@ -69,3 +89,5 @@ const handleNbrQuestions = async (event) => {
 }
 promptForm.addEventListener("submit", handleNbrQuestions);
 
+messagesContainer.classList.add("hidden");
+messagesContainer2.classList.add("hidden");
