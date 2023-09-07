@@ -1,0 +1,20 @@
+<nav role="navigation" class="primary-navigation">
+    <ul>
+        <li><a href="#">AIssistant</a></li>
+        <li><a href="#">QCM</a></li>
+        <li><a href="#"> <img src="static/images/moon.png" id="icon"> </a></li>
+    </ul>
+</nav>
+
+
+
+<script>
+    var icon = document.getElementById("icon");
+
+    icon.onclick = function () {
+        document.body.classList.toggle("dark-theme");
+        if (document.body.classList.contains("dark-theme")) {
+            icon.src = "static/images/sun.png"
+        } else { icon.src = "static/images/moon.png" }
+    }
+</script>

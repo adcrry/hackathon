@@ -1,69 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
 
-    <title>Mon A.I.de mémoire</title>
+<head>
 
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
-  </head>
+  <title>Mon A.I.de mémoire</title>
 
-  <body>
-    <main class="main-container">
-      <header class="header">
-        <h1 class="header-title">Mon A.I.de mémoire</h1>
-      </header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
 
-      <section id="messages-container" class="messages-container">
-        <div class="message message-ai">
-          Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-          le cours et je te répondrai.
-        </div>
-        {% for input in data %}
-        <div class="message message-ai-old">
-          {{ input['question']}}
-        </div>
-        <div class="message message-ai-old">
-          {{ input['answer']}}
-        </div>
-        {% endfor %}
-      </section>
+<body>
+  <main class="main-container">
 
-      <form id="prompt-form" class="prompt-container">
-        <label for="prompt" class="prompt-label">Message</label>
+    {% include 'navbar.html' %}
 
-        <input
-          type="text"
-          id="prompt"
-          name="prompt"
-          class="prompt-input"
-          autocomplete="off"
-        />
+    <header class="header">
+      <h1 class="header-title">Mon A.I.de mémoire</h1>
+    </header>
 
-        <button type="submit" class="button" id="submit-button">Envoyer</button>
+    <section id="messages-container" class="messages-container">
+      <div class="message message-ai">
+        Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
+        le cours et je te répondrai.
+      </div>
+      {% for input in data %}
+      <div class="message message-ai-old">
+        {{ input['question']}}
+      </div>
+      <div class="message message-ai-old">
+        {{ input['answer']}}
+      </div>
+      {% endfor %}
+    </section>
 
-        <button type="button" class="button" id="question-button">
-          Pose-moi une question !
-        </button>
-        <img src="static/images/moon.png" id="icon">
+    <form id="prompt-form" class="prompt-container">
+      <label for="prompt" class="prompt-label">Message</label>
 
-      </form>
-      
-      <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="off" />
 
-    </main>
-  
-  <script> 
-        var icon= document.getElementById("icon");
+      <button type="submit" class="button" id="submit-button">Envoyer</button>
 
-        icon.onclick = function(){
-            document.body.classList.toggle("dark-theme");
-            if(document.body.classList.contains("dark-theme")){
-                  icon.src = "static/images/sun.png"
-            }else{ icon.src = "static/images/moon.png"}
-        }
-  </script>
-  </body>
+      <button type="button" class="button" id="question-button">
+        Pose-moi une question !
+      </button>
+
+    </form>
+
+    <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+
+  </main>
+
+</body>
+
 </html>
