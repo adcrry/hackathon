@@ -125,7 +125,7 @@ def generate_QCM(n):
         + "Génère un QCM de "
         + str(n)
         + " question(s) où chaque question possède 3 réponses. Il doit n'y avoir qu'une bonne réponse parmi les trois placéealéatoirement."
-        + "Mets le tout dans un format JSON avec le format 'questions': [ { 'question': ... , 'answers': [ reponse a, reponse b, reponse c ], 'correct_answer': ... }, ... ]"
+        + "Mets le tout dans un format JSON avec le format 'questions': [ { 'question': ... , 'answers': [ reponse a, reponse b, reponse c ], 'correct_answer': ... }, ... ] où correct_answer représente l'index de la bonne réponse"
     )
 
 
