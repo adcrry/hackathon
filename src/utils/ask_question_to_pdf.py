@@ -118,3 +118,24 @@ def correct_answer(answer, question):
         + answer
         + ". Corrige cette réponse si elle est fausse."
     )
+
+
+def generate_QCM(n):
+    return gpt3_completion(
+        text
+        + "Génère un QCM de "
+        + str(n)
+        + " question(s) où chaque question possède 3 réponses. Il doit n'y avoir qu'une bonne réponse parmi les trois placéealéatoirement."
+        + "Mets le tout dans un format JSON où correct_answer représente l'index de la bonne réponse avec le format 'questions': [ { 'question': ... , 'answers': [ reponse a, reponse b, reponse c ], 'correct_answer': ... }, ... ]"
+    )
+
+
+def generate_QCM_answer(qcm, answers):
+    return gpt3_completion(
+        text
+        + "Voici un qcm sur le cours :"
+        + qcm
+        + ". Voici les réponses de l'étudiant:"
+        + answers
+        + ". Corrige les réponses de l'étudiant."
+    )

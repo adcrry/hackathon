@@ -5,7 +5,8 @@
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
-  --secondary-color: #d3f5ff;
+  /*--secondary-color: #d3f5ff;*/
+  --secondary-color: #28a1ed;
   --loader-bullet-size: 6px;
   --old-background-color: #b5b5b5;
 }
@@ -16,7 +17,7 @@
   --main-color: #ffffff;
   --max-body-width: 700px;
   --border-color: #cdc7d8;
-  --secondary-color: #8f7da2;
+  --secondary-color: #cebcd1;
   --loader-bullet-size: 6px;
 }
 
@@ -52,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .message {
@@ -85,6 +86,7 @@ body {
   background-color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 30px 30px 3px 30px;
+  color: var(--body-background-color);
 }
 
 .message-ai-old {
@@ -103,6 +105,10 @@ body {
   background-color: var(--main-background-color);
   padding: 20px;
   border-top: 1px solid var(--border-color);
+}
+
+.qcm-container {
+  margin-left: 300px;
 }
 
 .files-container {
@@ -152,6 +158,33 @@ body {
 #icon {
   width: 24px;
   cursor: pointer;
+}
+
+#correct-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: var(--secondary-color);
+  color: var(--body-background-color);
+  border: none;
+  /* ajouter une bordure intérieur autour du texte */
+  padding: 5px;
+  padding-inline: 10px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+#qcm-questions-form {
+  margin-top: 40px;
+  /* frame with a rounded border*/
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+  padding-inline: 30px;
+
+}
+
+#qcm-questions-form div p {
+  font-weight: bold;
 }
 
 /* Loader code taken from https://loading.io/css/ */
