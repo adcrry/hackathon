@@ -111,6 +111,19 @@ body {
   margin-left: 300px;
 }
 
+.files-container {
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--max-body-width);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--main-background-color);
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+
 .prompt-label {
   font-weight: bold;
 }
