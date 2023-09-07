@@ -50,7 +50,8 @@ const createQCM = async (messagePromise) => {
     label2.id = "label-" + question + "-1"
     label3.id = "label-" + question + "-2"
 
-    questionElement.innerHTML = jsonData.questions[question].question
+    questionElement.innerHTML = "Q" + (parseInt(question) + 1) + "- " + jsonData.questions[question].question
+
 
     label1.innerHTML = jsonData.questions[question].answers[0]
     label2.innerHTML = jsonData.questions[question].answers[1]
