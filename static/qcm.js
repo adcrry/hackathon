@@ -1,11 +1,13 @@
 const generateButton = document.getElementById("generate-button");
 const promptForm = document.getElementById("qcm-form")
 const qcmForm = document.getElementById("qcm-questions-form")
-
+var questions = null
+var nbQuestion = 0
 const createQCM = async (messagePromise) => {
   qcmForm.innerHTML = ""
   const qcmData = await messagePromise();
   const jsonData = JSON.parse(qcmData)
+  questions = jsonData
   for (var question in jsonData.questions) {
     const div = document.createElement("div");
     const questionElement = document.createElement("p");
@@ -32,6 +34,10 @@ const createQCM = async (messagePromise) => {
     label2.for = "q-" + question + "-1"
     label3.for = "q-" + question + "-2"
 
+    label1.id = "label-" + question + "-0"
+    label2.id = "label-" + question + "-1"
+    label3.id = "label-" + question + "-2"
+
     questionElement.innerHTML = jsonData.questions[question].question
 
     label1.innerHTML = jsonData.questions[question].answers[0]
@@ -56,7 +62,7 @@ const handleNbrQuestions = async (event) => {
   // Parse form data in a structured object
   const data = new FormData(event.target);
   promptForm.reset();
-
+  nbQuestion = data.get("nbrQuestions")
   let url = "/qcm/question"
   await createQCM(async () => {
     const response = await fetch(url, {
@@ -68,4 +74,31 @@ const handleNbrQuestions = async (event) => {
   });
 }
 promptForm.addEventListener("submit", handleNbrQuestions);
+
+const correctQCM = () => {
+  for (var i = 0; i < nbQuestion; i++) {
+    const labels = [
+      document.getElementById("label-" + i + "-0"),
+      document.getElementById("label-" + i + "-1"),
+      document.getElementById("label-" + i + "-2")
+    ]
+    const inputs = [
+      document.getElementById("q-" + i + "-0"),
+      document.getElementById("q-" + i + "-1"),
+      document.getElementById("q-" + i + "-2")
+    ]
+    console.log(inputs[questions.questions[i].correct_answer])
+    if (inputs[questions.questions[i].correct_answer].checked) {
+      labels[questions.questions[i].correct_answer].style.color = "green"
+    } else {
+      for (var j = 0; j < 3; j++) {
+        if (inputs[j].checked) {
+          labels[j].style.color = "red"
+        }
+      }
+    }
+
+
+  }
+}
 
