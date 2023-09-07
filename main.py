@@ -46,13 +46,14 @@ def qcm_page():
 
 @app.route("/qcm/question", methods=["GET"])
 def qcmQuestion():
-    n = request.form["nbrQuestions"]
-    qcmQuestion = ask_question_to_pdf.generate_QCM(n)
+    # n = request.form["nbrQuestions"]
+    qcmQuestion = ask_question_to_pdf.generate_QCM(10)
+    print(qcmQuestion)
     return {"qcmQuestion": qcmQuestion}
 
 
 @app.route("/qcm/answer", methods=["GET"])
 def qcmAnswer():
     # eeuuh faut gérer de récup les réponses de l'élève
-    qcmAnswer = ask_question_to_pdf.generate_answer_QCM(n, answers)
+    # qcmAnswer = ask_question_to_pdf.generate_answer_QCM(n, answers)
     return {"qcmAnswer": qcmAnswer}
