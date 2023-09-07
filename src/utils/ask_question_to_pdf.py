@@ -117,3 +117,23 @@ def correct_answer(answer, question):
         + answer
         + ". Corrige cette réponse si elle est fausse."
     )
+
+
+def generate_QCM(n):
+    return gpt3_completion(
+        text
+        + "Génère moi un QCM de"
+        + n
+        + " questions avec chacune 3 choix. Chacune ayant une unique bonne réponse."
+    )
+
+
+def generate_QCM_answer(qcm, answers):
+    return gpt3_completion(
+        text
+        + "Voici un qcm sur le cours :"
+        + qcm
+        + ". Voici les réponses de l'étudiant:"
+        + answers
+        + ". Corrige les réponses de l'étudiant."
+    )

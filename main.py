@@ -37,3 +37,22 @@ def answer():
     with open("data.json", "w") as json_file:
         json.dump(data, json_file)
     return {"answer": answer}
+
+
+@app.route("/qcm", methods=["GET"])
+def qcm_page():
+    return render_template("qcm.html", name="qcm")
+
+
+@app.route("/qcm/question", methods=["GET"])
+def qcmQuestion():
+    n = request.form["nbrQuestions"]
+    qcmQuestion = ask_question_to_pdf.generate_QCM(n)
+    return {"qcmQuestion": qcmQuestion}
+
+
+@app.route("/qcm/answer", methods=["GET"])
+def qcmAnswer():
+    # eeuuh faut gérer de récup les réponses de l'élève
+    qcmAnswer = ask_question_to_pdf.generate_answer_QCM(n, answers)
+    return {"qcmAnswer": qcmAnswer}

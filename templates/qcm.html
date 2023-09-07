@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <title>Mes QCM</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+    <main class="main-container">
+        <header class="header">
+            <h1 class="header-title">S'entraîner avec des QCM</h1>
+        </header>
+
+        <form id="qcm-form" class="qcm-container">
+            <label for="qcm" class="qcm-nbr-label">Nombre de questions à générer</label>
+
+            <input type="text" id="nbrQuestions" name="nbrQuestions" class="qcm-input" autocomplete="off" />
+
+            <button type="generate" class="button" id="generate-button">Générer le QCM</button>
+
+        </form>
+
+        <form>
+            <p>Veuillez choisir la meilleure méthode pour vous contacter :</p>
+            <div>
+                <input type="radio" id="contactChoice1" name="contact" value="email" checked />
+                <label for="contactChoice1">Email</label>
+
+                <input type="radio" id="contactChoice2" name="contact" value="telephone" />
+                <label for="contactChoice2">Téléphone</label>
+
+                <input type="radio" id="contactChoice3" name="contact" value="courrier" />
+                <label for="contactChoice3">Courrier</label>
+            </div>
+        </form>
+        <div>
+            <button type="submit">Terminer et corriger</button>
+        </div>
+
+
+
+</body>
+
+</html>
