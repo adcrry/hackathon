@@ -4,6 +4,7 @@ const qcmForm = document.getElementById("qcm-questions-form")
 const messagesContainer = document.getElementById("messages-container-loader");
 const messagesContainer2 = document.getElementById("messages-container-loaded");
 const loadingElement = document.getElementById("loading");
+const correctButton = document.getElementById("correct-button");
 
 var questions = null
 var nbQuestion = 0
@@ -49,7 +50,8 @@ const createQCM = async (messagePromise) => {
     label2.id = "label-" + question + "-1"
     label3.id = "label-" + question + "-2"
 
-    questionElement.innerHTML = jsonData.questions[question].question
+    questionElement.innerHTML = "Q" + (parseInt(question) + 1) + "- " + jsonData.questions[question].question
+
 
     label1.innerHTML = jsonData.questions[question].answers[0]
     label2.innerHTML = jsonData.questions[question].answers[1]
@@ -94,6 +96,9 @@ const handleNbrQuestions = async (event) => {
     const result = await response.json();
     return result.qcmQuestion;
   });
+
+  correctButton.classList.remove("hidden");
+  qcmForm.classList.remove("hidden");
 }
 promptForm.addEventListener("submit", handleNbrQuestions);
 
@@ -125,3 +130,5 @@ const correctQCM = () => {
 }
 messagesContainer.classList.add("hidden");
 messagesContainer2.classList.add("hidden");
+correctButton.classList.add("hidden");
+qcmForm.classList.add("hidden");
