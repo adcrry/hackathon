@@ -5,7 +5,8 @@
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
-  --secondary-color: #d3f5ff;
+  /*--secondary-color: #d3f5ff;*/
+  --secondary-color: #28a1ed;
   --loader-bullet-size: 6px;
   --old-background-color: #b5b5b5;
 }
@@ -16,7 +17,7 @@
   --main-color: #ffffff;
   --max-body-width: 700px;
   --border-color: #cdc7d8;
-  --secondary-color: #8f7da2;
+  --secondary-color: #cebcd1;
   --loader-bullet-size: 6px;
 }
 
@@ -85,6 +86,7 @@ body {
   background-color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 30px 30px 3px 30px;
+  color: var(--body-background-color);
 }
 
 .message-ai-old {
@@ -149,11 +151,12 @@ body {
   margin-left: 20px;
   margin-top: 20px;
   background-color: var(--secondary-color);
-  color: var(--main-color);
+  color: var(--body-background-color);
   border: none;
   /* ajouter une bordure intérieur autour du texte */
   padding: 5px;
   padding-inline: 10px;
+  font-weight: bold;
 }
 
 /* Loader code taken from https://loading.io/css/ */
