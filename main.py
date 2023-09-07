@@ -44,10 +44,10 @@ def qcm_page():
     return render_template("qcm.html", name="qcm")
 
 
-@app.route("/qcm/question", methods=["GET"])
+@app.route("/qcm/question", methods=["POST"])
 def qcmQuestion():
-    # n = request.form["nbrQuestions"]
-    qcmQuestion = ask_question_to_pdf.generate_QCM(10)
+    n = request.form["nbrQuestions"]
+    qcmQuestion = ask_question_to_pdf.generate_QCM(n)
     print(qcmQuestion)
     return {"qcmQuestion": qcmQuestion}
 

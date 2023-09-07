@@ -1,10 +1,10 @@
 const generateButton = document.getElementById("generate-button");
+const promptForm = document.getElementById("qcm-form")
 
 const handleNbrQuestions = async (event) => {
   event.preventDefault();
   // Parse form data in a structured object
   const data = new FormData(event.target);
-  console.log(data);
   generateButton.reset();
 
   let url = "/qcm/question";
@@ -15,9 +15,9 @@ const handleNbrQuestions = async (event) => {
       body: data,
     });
     const result = await response.json();
-    return result.answer;
+    return result.qcmQuestion;
   });
 }
 
-generateButton.addEventListener("submit", handleNbrQuestions);
+promptForm.addEventListener("submit", handleNbrQuestions);
 
