@@ -5,18 +5,19 @@
   --main-color: #2a303b;
   --max-body-width: 700px;
   --border-color: #cccccc;
-  --secondary-color: #d3f5ff;
+  /*--secondary-color: #d3f5ff;*/
+  --secondary-color: #28a1ed;
   --loader-bullet-size: 6px;
   --old-background-color: #b5b5b5;
 }
 
 .dark-theme {
   --body-background-color: #1e1f24;
-  --main-background-color: #36333b;
+  --main-background-color: #3a383d;
   --main-color: #ffffff;
   --max-body-width: 700px;
   --border-color: #cdc7d8;
-  --secondary-color: #8f7da2;
+  --secondary-color: #e9b7f2;
   --loader-bullet-size: 6px;
 }
 
@@ -36,7 +37,7 @@ body {
   min-height: 100vh;
   background-color: var(--main-background-color);
   color: var(--main-color);
-  padding: 50px;
+  padding: 0px 50px 50px 50px;
   margin: 0 auto;
 }
 
@@ -52,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .message {
@@ -85,6 +86,7 @@ body {
   background-color: var(--secondary-color);
   border: 1px solid var(--secondary-color);
   border-radius: 30px 30px 3px 30px;
+  color: var(--body-background-color);
 }
 
 .message-ai-old {
@@ -103,6 +105,10 @@ body {
   background-color: var(--main-background-color);
   padding: 20px;
   border-top: 1px solid var(--border-color);
+}
+
+.qcm-container {
+  margin-left: 300px;
 }
 
 .files-container {
@@ -150,8 +156,35 @@ body {
 }
 
 #icon {
-  width: 24px;
+  width: 16px;
   cursor: pointer;
+}
+
+#correct-button {
+  margin-left: 20px;
+  margin-top: 20px;
+  background-color: var(--secondary-color);
+  color: var(--body-background-color);
+  border: none;
+  /* ajouter une bordure intérieur autour du texte */
+  padding: 5px;
+  padding-inline: 10px;
+  font-weight: bold;
+  font-size: medium;
+}
+
+#qcm-questions-form {
+  margin-top: 40px;
+  /* frame with a rounded border*/
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 20px;
+  padding-inline: 30px;
+
+}
+
+#qcm-questions-form div p {
+  font-weight: bold;
 }
 
 /* Loader code taken from https://loading.io/css/ */
@@ -220,4 +253,84 @@ body {
   100% {
     transform: translate(calc(var(--loader-bullet-size) * 2), 0);
   }
+}
+
+
+nav.primary-navigation {
+  margin: 0 auto;
+  margin-bottom: 40px;
+  display: block;
+  padding: 20px 0 0 0;
+  text-align: center;
+  border-bottom: 1px solid var(--border-color);
+}
+
+nav.primary-navigation ul li {
+  list-style: none;
+  margin: 0 auto;
+  border-left: 2px solid var(--secondary-color);
+  display: inline-block;
+  padding: 0 30px;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+}
+
+nav.primary-navigation li a {
+  color: var(--main-color);
+}
+
+nav.primary-navigation li a:hover {
+  color: var(--secondary-color);
+}
+
+nav.primary-navigation li:hover {
+  cursor: pointer;
+}
+
+nav.primary-navigation ul li ul {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  padding-left: 0;
+  left: 0;
+  display: none;
+  background: var(--body-background-color);
+}
+
+nav.primary-navigation ul li:hover>ul,
+nav.primary-navigation ul li ul:hover {
+  visibility: visible;
+  opacity: 1;
+  display: block;
+  min-width: 250px;
+  text-align: left;
+  padding-top: 20px;
+  box-shadow: 0px 3px 5px -1px var(--border-color);
+}
+
+nav.primary-navigation ul li ul li {
+  clear: both;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 20px;
+  border-style: none;
+}
+
+nav.primary-navigation ul li ul li a:hover {
+  padding-left: 10px;
+  border-left: 2px solid var(--secondary-color);
+  transition: all 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+nav.primary-navigation ul li ul li a {
+  transition: all 0.5s ease;
 }
