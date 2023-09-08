@@ -123,10 +123,10 @@ def correct_answer(answer, question):
 def generate_QCM(n):
     return gpt3_completion(
         text
-        + "Génère un QCM de "
+        + "Génère un QCM de exactement "
         + str(n)
         + " question(s) où chaque question possède 3 réponses. Il doit n'y avoir qu'une bonne réponse parmi les trois placéealéatoirement."
-        + "Mets le tout dans un format JSON où correct_answer représente l'index de la bonne réponse avec le format 'questions': [ { 'question': ... , 'answers': [ reponse a, reponse b, reponse c ], 'correct_answer': ... }, ... ]"
+        + "Mets le tout dans un format JSON où correct_answer représente l'index de la bonne réponse compris entre 0 et 2 avec le format 'questions': [ { 'question': ... , 'answers': [ reponse a, reponse b, reponse c ], 'correct_answer': ... }, ... ]"
     )
 
 

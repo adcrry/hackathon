@@ -5,6 +5,7 @@ const messagesContainer = document.getElementById("messages-container-loader");
 const messagesContainer2 = document.getElementById("messages-container-loaded");
 const loadingElement = document.getElementById("loading");
 const correctButton = document.getElementById("correct-button");
+const mainContainer = document.getElementById("main-container");
 
 var questions = null
 var nbQuestion = 0
@@ -114,9 +115,9 @@ const correctQCM = () => {
       document.getElementById("q-" + i + "-1"),
       document.getElementById("q-" + i + "-2")
     ]
+    labels[questions.questions[i].correct_answer].style.color = "green"
     if (inputs[questions.questions[i].correct_answer].checked) {
       score++
-      labels[questions.questions[i].correct_answer].style.color = "green"
     } else {
       for (var j = 0; j < 3; j++) {
         if (inputs[j].checked) {
@@ -124,9 +125,14 @@ const correctQCM = () => {
         }
       }
     }
-
-
   }
+  const scoreDiv = document.createElement("div");
+  scoreDiv.classList.add("message")
+  scoreDiv.classList.add("message-ai")
+  scoreDiv.innerHTML = "Tu as obtenu " + score + " bonne(s) réponses sur " + nbQuestion + " question(s) !"
+  scoreDiv.style.marginTop = "10px"
+  mainContainer.appendChild(scoreDiv)
+  correctButton.classList.add("hidden");
 }
 messagesContainer.classList.add("hidden");
 messagesContainer2.classList.add("hidden");
