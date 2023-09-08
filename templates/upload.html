@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <title>Mon A.I.de mémoire</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+    <main class="main-container">
+
+        {% include 'navbar.html' %}
+
+        <header class="header">
+            <h1 class="header-title">Importe ton cours</h1>
+        </header>
+
+        <section class="messages-container">
+            <div id="loading" class="message message-ai">
+                Importe ton cours au format PDF !
+            </div>
+        </section>
+
+        <form method="POST" enctype=multipart/form-data action="/upload/file">
+            <input type="file" class="file-button" name="file" />
+            <input type="submit" id="import-button" class="button" value="Envoyer" />
+        </form>
+
+    </main>
+
+</body>
+
+</html>

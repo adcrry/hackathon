@@ -71,7 +71,7 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/upload", methods=["POST"])
+@app.route("/upload/file", methods=["POST"])
 def upload():
     if request.method == "POST":
         # check if the post request has the file part
@@ -83,10 +83,17 @@ def upload():
         # empty file without a filename.
         if file.filename == "":
             flash("No selected file")
-            return redirect(request.url)
+            return redirect("/upload")
         if file and allowed_file(file.filename):
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], "filename.pdf"))
-            return redirect("/")
+            return redirect("/upload")
+
+
+@app.route("/upload")
+def uploadHTML():
+    return render_template("upload.html")
+
+
 @app.route("/qcm", methods=["GET"])
 def qcm_page():
     return render_template("qcm.html", name="qcm")
@@ -98,10 +105,3 @@ def qcmQuestion():
     qcmQuestion = ask_question_to_pdf.generate_QCM(n)
     print(qcmQuestion)
     return {"qcmQuestion": qcmQuestion}
-
-
-@app.route("/qcm/answer", methods=["GET"])
-def qcmAnswer():
-    # eeuuh faut gérer de récup les réponses de l'élève
-    # qcmAnswer = ask_question_to_pdf.generate_answer_QCM(n, answers)
-    return {"qcmAnswer": qcmAnswer}
