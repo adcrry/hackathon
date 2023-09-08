@@ -104,6 +104,7 @@ const handleNbrQuestions = async (event) => {
 promptForm.addEventListener("submit", handleNbrQuestions);
 
 const correctQCM = () => {
+  console.log("dskgfsdkfj")
   for (var i = 0; i < nbQuestion; i++) {
     const labels = [
       document.getElementById("label-" + i + "-0"),

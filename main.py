@@ -11,6 +11,10 @@ ALLOWED_EXTENSIONS = {"pdf"}
 
 json_database = open("data.json")
 data = json.loads(json_database.read())
+
+json_theme = open("theme.json")
+theme = json.loads(json_theme.read())
+
 app = Flask("app")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
@@ -19,6 +23,23 @@ app.secret_key = "super secret key"
 @app.route("/")
 def hello_world():
     return render_template("index.html", name="index", data=data)
+
+
+@app.route("/theme", methods=["GET"])
+def getTheme():
+    return theme["theme"]
+
+
+@app.route("/theme", methods=["PUT"])
+def putTheme():
+    "modify the json file to change the theme"
+    nowTheme = theme["theme"]
+    if nowTheme == "light":
+        theme["theme"] = "dark"
+    else:
+        theme["theme"] = "light"
+    with open("theme.json", "w") as json_file:
+        json.dump(theme, json_file)
 
 
 @app.route("/prompt", methods=["POST"])
@@ -70,7 +91,7 @@ def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
-@app.route("/upload", methods=["POST"])
+@app.route("/upload/file", methods=["POST"])
 def upload():
     if request.method == "POST":
         # check if the post request has the file part
@@ -82,7 +103,12 @@ def upload():
         # empty file without a filename.
         if file.filename == "":
             flash("No selected file")
-            return redirect(request.url)
+            return redirect("/upload")
         if file and allowed_file(file.filename):
             file.save(os.path.join(app.config["UPLOAD_FOLDER"], "filename.pdf"))
-            return redirect("/")
+            return redirect("/upload")
+
+
+@app.route("/upload")
+def uploadHTML():
+    return render_template("upload.html")
