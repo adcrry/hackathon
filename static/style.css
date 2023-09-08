@@ -161,6 +161,8 @@ body {
 }
 
 #correct-button {
+  padding: 5px;
+  border-radius: 5px;
   margin-left: 20px;
   margin-top: 20px;
   background-color: var(--secondary-color);
@@ -171,6 +173,23 @@ body {
   padding-inline: 10px;
   font-weight: bold;
   font-size: medium;
+}
+
+.file-button::file-selector-button {
+  font-weight: bold;
+  color: var(--main-background-color);
+  padding: 0.5em;
+  border: thin solid var(--main-background-color);
+  border-radius: 6px;
+  background-color: var(--secondary-color);
+}
+
+.input {
+  margin-top: 1rem;
+}
+
+.file-button {
+  margin-left: 250px;
 }
 
 #qcm-questions-form {

@@ -11,7 +11,7 @@
 <body>
   <main class="main-container">
 
-	{% include 'navbar.html' %}
+    {% include 'navbar.html' %}
 
     <header class="header">
       <h1 class="header-title">Mon A.I.de mémoire</h1>
@@ -45,23 +45,12 @@
       <button type="button" class="button" id="question-button">
         Pose-moi une question !
       </button>
-      <img src="static/images/moon.png" id="icon">
 
     </form>
     <script src=" {{ url_for('static', filename='prompt.js' ) }}"></script>
 
   </main>
 
-  <script>
-    var icon = document.getElementById("icon");
-
-    icon.onclick = function () {
-      document.body.classList.toggle("dark-theme");
-      if (document.body.classList.contains("dark-theme")) {
-        icon.src = "static/images/sun.png"
-      } else { icon.src = "static/images/moon.png" }
-    }
-  </script>
 </body>
 
 </html>

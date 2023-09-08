@@ -11,6 +11,10 @@ ALLOWED_EXTENSIONS = {"pdf"}
 
 json_database = open("data.json")
 data = json.loads(json_database.read())
+
+json_theme = open("theme.json")
+theme = json.loads(json_theme.read())
+
 app = Flask("app")
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 app.secret_key = "super secret key"
@@ -19,6 +23,23 @@ app.secret_key = "super secret key"
 @app.route("/")
 def hello_world():
     return render_template("index.html", name="index", data=data)
+
+
+@app.route("/theme", methods=["GET"])
+def getTheme():
+    return theme["theme"]
+
+
+@app.route("/theme", methods=["PUT"])
+def putTheme():
+    "modify the json file to change the theme"
+    nowTheme = theme["theme"]
+    if nowTheme == "light":
+        theme["theme"] = "dark"
+    else:
+        theme["theme"] = "light"
+    with open("theme.json", "w") as json_file:
+        json.dump(theme, json_file)
 
 
 @app.route("/prompt", methods=["POST"])
