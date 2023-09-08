@@ -3,3 +3,6 @@
 
 *.pyc
 data.json
+.DS_Store
+src/utils/filename.pdf
+*.pyc
